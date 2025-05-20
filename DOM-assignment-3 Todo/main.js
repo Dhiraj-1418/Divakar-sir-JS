@@ -2,38 +2,60 @@ let task = document.getElementById("task");
 let priority = document.getElementById("priority");
 let form = document.getElementById("form");
 let tableBody = document.querySelector("tbody");
- 
 
-form.addEventListener('submit',(event)=> {
-    event.preventDefault();
-    taskAddCall();
-});
+let todoData = JSON.parse(localStorage.getItem("Todo")) || [];
 
-function taskAddCall(){
+function TodoTask() {
+  tableBody.innerHTML = "";
 
+  todoData.forEach((el, i) => {
     let tr = document.createElement("tr");
-    let addTask = document.createElement("td");
-    let addPriority = document.createElement("td");
-    let deleteTask = document.createElement("button");
-    
-    let taskValue = task.value;
-    let priorityValue = priority.value;
-    deleteTask.innerHTML = "Delete";
-    addTask.append(taskValue);
-    addPriority.append(priorityValue);
 
-    tr.appendChild(addTask);
-    tr.appendChild(addPriority);
-    tr.appendChild(deleteTask);
+    let tdTask = document.createElement("td");
+    let tdPriority = document.createElement("td");
 
-    tableBody.append(tr);
-
-    deleteTask.addEventListener("click" , ()=> {
-        tr.remove();
+    let tdDelete = document.createElement("button");
+    tdDelete.innerHTML = "Delete";
+    tdDelete.addEventListener("click", () => {
+      todoData.splice(i, 1);
+      localStorage.setItem("Todo", JSON.stringify(todoData));
+      TodoTask();
     });
 
+    tdTask.textContent = el.taskname;
+    tdPriority.textContent = el.priorityName;
 
-};
+    tr.appendChild(tdTask);
+    tr.appendChild(tdPriority);
+    tr.appendChild(tdDelete);
 
+    tableBody.appendChild(tr);
+  });
+}
 
- 
+TodoTask();
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const taskValue = task.value;
+  const priorityValue = priority.value;
+
+  // console.log(taskValue);
+  // console.log(priorityValue);
+
+  const obj = {
+    taskname: taskValue,
+    priorityName: priorityValue,
+  };
+  // console.log(obj);
+
+  todoData.push(obj);
+  console.log(todoData);
+  localStorage.setItem("Todo", JSON.stringify(todoData));
+
+  task.value = "";
+  priority.value = "";
+
+  TodoTask();
+});
