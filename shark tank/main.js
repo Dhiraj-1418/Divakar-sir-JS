@@ -115,6 +115,49 @@ function dataFilledInCard(pitchesExctractedData) {
 
     mainSection.innerHTML = filteredFood;
     console.log(filteredFood);
+
+
+    sortZtoABtn.addEventListener("click", () => {
+    let sortArrayInFood = filterArr.sort((a, b) => b.price - a.price);
+
+    let highToLowSortedFoood = sortArrayInFood.map((highToLowFood, i) =>
+      card(
+        highToLowFood.image,
+        highToLowFood.title,
+        highToLowFood.founder,
+        highToLowFood.price,
+        highToLowFood.id,
+        highToLowFood.category
+      )
+    );
+
+    mainSection.innerHTML = highToLowSortedFoood;
+    console.log(highToLowSortedFoood);
+  });
+
+
+
+  sortAtoZBtn.addEventListener("click", () => {
+    let sortArrayInFoodAsc = filterArr.sort((a, b) => a.price - b.price);
+
+    let lowToHighSortedFood = sortArrayInFoodAsc.map((lowToHighInFood, i) =>
+      card(
+        lowToHighInFood.image,
+        lowToHighInFood.title,
+        lowToHighInFood.founder,
+        lowToHighInFood.price,
+        lowToHighInFood.id,
+        lowToHighInFood.category
+      )
+    );
+
+    mainSection.innerHTML = lowToHighSortedFood;
+    console.log(lowToHighSortedFood);
+  });
+
+
+
+
   });
 
 
@@ -134,6 +177,50 @@ function dataFilledInCard(pitchesExctractedData) {
 
     mainSection.innerHTML = filteredElectronics;
     console.log(filteredElectronics);
+
+
+sortZtoABtn.addEventListener("click", () => {
+    let sortArrayInEle = electronicsArr.sort((a, b) => b.price - a.price);
+
+    let highToLowSortedEle = sortArrayInEle.map((highToLowEle, i) =>
+      card(
+        highToLowEle.image,
+        highToLowEle.title,
+        highToLowEle.founder,
+        highToLowEle.price,
+        highToLowEle.id,
+        highToLowEle.category
+      )
+    );
+
+    mainSection.innerHTML = highToLowSortedEle;
+    console.log(highToLowSortedEle);
+  });
+
+
+
+  sortAtoZBtn.addEventListener("click", () => {
+    let sortArrayInEleAsc = electronicsArr.sort((a, b) => a.price - b.price);
+
+    let lowToHighSortedEle = sortArrayInEleAsc.map((lowToHighInEle, i) =>
+      card(
+        lowToHighInEle.image,
+        lowToHighInEle.title,
+        lowToHighInEle.founder,
+        lowToHighInEle.price,
+        lowToHighInEle.id,
+        lowToHighInEle.category
+      )
+    );
+
+    mainSection.innerHTML = lowToHighSortedEle;
+    console.log(lowToHighSortedEle);
+  });
+
+
+
+
+
   });
 
 
@@ -154,6 +241,51 @@ function dataFilledInCard(pitchesExctractedData) {
 
     mainSection.innerHTML = filteredPc;
     console.log(filteredPc);
+
+
+
+    sortZtoABtn.addEventListener("click", () => {
+    let sortArrayInPc = pcArry.sort((a, b) => b.price - a.price);
+
+    let highToLowSortedPc = sortArrayInPc.map((highToLowPc, i) =>
+      card(
+        highToLowPc.image,
+        highToLowPc.title,
+        highToLowPc.founder,
+        highToLowPc.price,
+        highToLowPc.id,
+        highToLowPc.category
+      )
+    );
+
+    mainSection.innerHTML = highToLowSortedPc;
+    console.log(highToLowSortedPc);
+  });
+
+
+
+  sortAtoZBtn.addEventListener("click", () => {
+    let sortArrayInPcAsc = pcArry.sort((a, b) => a.price - b.price);
+
+    let lowToHighSortedPc = sortArrayInPcAsc.map((lowToHighInPc, i) =>
+      card(
+        lowToHighInPc.image,
+        lowToHighInPc.title,
+        lowToHighInPc.founder,
+        lowToHighInPc.price,
+        lowToHighInPc.id,
+        lowToHighInPc.category
+      )
+    );
+
+    mainSection.innerHTML = lowToHighSortedPc;
+    console.log(lowToHighSortedPc);
+  });
+
+
+
+
+
   });
 
 }
@@ -219,12 +351,3 @@ updatePricePitchPriceButton.addEventListener("click", () => {
     body: JSON.stringify(updatedPitchesPrice),
   });
 });
-
-// +++++++++++++++++++++++++++Task 4 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-// function sortedPitches(dataForSort){
-//      let sortArry= dataForSort.sort((a,b)=>a.price-b.price)
-//      console.log(sortArry)
-
-//   mainSection.innerHTML = ;
-// }
